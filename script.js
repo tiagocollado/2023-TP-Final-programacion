@@ -28,7 +28,7 @@ function checkWinner() {
         const [a, b, c] = combo;
         if (tablero[a] && tablero[a] === tablero[b] && tablero[b] === tablero[c]) {
             gameOver = true;
-            resultado.textContent = ${player} ha ganado!;
+            resultado.textContent = `${player} ha ganado!`;
 
             if (player === "X") {
                 playerScore += 10;
@@ -67,7 +67,7 @@ function handleCellClick(e) {
                 }, []);
                 const randomCellIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
                 setTimeout(() => {
-                    const pcCell = document.getElementById(cell-${randomCellIndex});
+                    const pcCell = document.getElementById(`cell-${randomCellIndex}`);
                     pcCell.click();
                 }, 500);
             }
@@ -95,4 +95,4 @@ document.getElementById("start-game").addEventListener("click", function () {
 });
 
 cells.forEach(cell => cell.addEventListener("click", handleCellClick));
-resetButton.addEventListener("click", resetGame);
+resetButton.addEventListener("click", resetGame);
