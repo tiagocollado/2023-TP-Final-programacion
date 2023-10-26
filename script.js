@@ -1,13 +1,13 @@
-let player = "X"; // Cambiar a "O" si la PC va primeroo
-let playerName = "";
-document.getElementById("player-name").addEventListener("input", function () {
-    playerName = this.value;
+let jugador = "X"; // Cambiar a "O" si la PC va primeroo
+let nombreJugador = "";
+document.getElementById("jugador-nombre").addEventListener("input", function () {
+    nombreJugador = this.value;
 });
 
-let playerScore = 0;
+let scoreJugador = 0;
 let pcScore = 0;
 
-document.getElementById("player-score").textContent = playerScore;
+document.getElementById("jugador-score").textContent = scoreJugador;
 document.getElementById("pc-score").textContent = pcScore;
 
 let tablero = ["", "", "", "", "", "", "", "", ""];
@@ -28,14 +28,14 @@ function checkWinner() {
         const [a, b, c] = combo;
         if (tablero[a] && tablero[a] === tablero[b] && tablero[b] === tablero[c]) {
             gameOver = true;
-            resultado.textContent = `${player} ha ganado!`;
+            resultado.textContent = `${jugador} ha ganado!`;
 
-            if (player === "X") {
-                playerScore += 10;
+            if (jugador === "X") {
+                scoreJugador += 10;
             } else {
                 pcScore += 10;
             }
-            document.getElementById("player-score").textContent = playerScore;
+            document.getElementById("jugador-score").textContent = scoreJugador;
             document.getElementById("pc-score").textContent = pcScore;
             return;
         }
@@ -52,14 +52,14 @@ function handleCellClick(e) {
     const cellIndex = cell.id.split("-")[1];
 
     if (tablero[cellIndex] === "" && !gameOver) {
-        tablero[cellIndex] = player;
-        cell.textContent = player;
+        tablero[cellIndex] = jugador;
+        cell.textContent = jugador;
         checkWinner();
 
         if (!gameOver) {
-            player = player === "X" ? "O" : "X";
+            jugador = jugador === "X" ? "O" : "X";
 
-            if (player === "O") {
+            if (jugador === "O") {
                 // Simular jugada de la PC (aleatoria)
                 const emptyCells = tablero.reduce((acc, val, index) => {
                     if (val === "") acc.push(index);
@@ -76,7 +76,7 @@ function handleCellClick(e) {
 }
 
 function resetGame() {
-    player = "X"; // Restablecer al jugador humano
+    jugador = "X"; // Restablecer al jugador humano
     tablero = ["", "", "", "", "", "", "", "", ""];
     gameOver = false;
     resultado.textContent = "";
@@ -84,12 +84,12 @@ function resetGame() {
 }
 
 document.getElementById("start-game").addEventListener("click", function () {
-    if (playerName.trim() === "") {
+    if (nombreJugador.trim() === "") {
         alert("Por favor, ingrese su nombre antes de comenzar el juego.");
     } else {
-        playerName = playerName.trim();
-        document.getElementById("player-name").value = playerName;
-        document.getElementById("player-name").setAttribute("readonly", "true");
+        nombreJugador = nombreJugador.trim();
+        document.getElementById("jugador-nombre").value = nombreJugador;
+        document.getElementById("jugador-nombre").setAttribute("readonly", "true");
         resetGame();
     }
 });
