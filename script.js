@@ -1,7 +1,11 @@
 let jugador = "X"; // Cambiar a "O" si la PC va primeroo
 let nombreJugador = "";
+let ganador= "";
+
 document.getElementById("jugador-nombre").addEventListener("input", function () {
     nombreJugador = this.value;
+    ganador = nombreJugador
+    document.getElementById("nombre-jugadorpuesto").innerHTML = nombreJugador
 });
 
 let scoreJugador = 0;
@@ -28,12 +32,16 @@ function checkWinner() {
         const [a, b, c] = combo;
         if (tablero[a] && tablero[a] === tablero[b] && tablero[b] === tablero[c]) {
             gameOver = true;
-            resultado.textContent = `${nombreJugador} ha ganado!`;
+           
+
+           
 
             if (jugador === "X") {
                 scoreJugador += 10;
+                resultado.textContent = `${nombreJugador} ha ganado!`;
             } else {
                 pcScore += 10;
+                resultado.textContent = "PC ha ganado!";
             }
             document.getElementById("jugador-score").textContent = scoreJugador;
             document.getElementById("pc-score").textContent = pcScore;
