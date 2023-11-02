@@ -28,7 +28,7 @@ function checkWinner() {
         const [a, b, c] = combo;
         if (tablero[a] && tablero[a] === tablero[b] && tablero[b] === tablero[c]) {
             gameOver = true;
-            resultado.textContent = `${jugador} ha ganado!`;
+            resultado.textContent = `${nombreJugador} ha ganado!`;
 
             if (jugador === "X") {
                 scoreJugador += 10;
