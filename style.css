@@ -43,19 +43,19 @@ h1 {
 }
 
 
-/* Player turn space */
+
 #print {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: dodgerblue;
     font-size: 20px;
 }
 
-/* Main Container */
+
 #main {
     text-align: center;
 }
 
-/* Game Instruction Text */
+
 #ins {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: dodgerblue;
