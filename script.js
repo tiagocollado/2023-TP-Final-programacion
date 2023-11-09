@@ -16,6 +16,7 @@ let scorePlayer = 0;
 let pcScore = 0;
 let board = ["", "", "", "", "", "", "", "", ""];
 let gameOver = false;
+let gameStarted = false;
 
 // Creacion de todos los eventListener
 playerNameSelector.addEventListener("input",  (e) => { //Cuando el usuario ingresa su nombre
@@ -24,7 +25,8 @@ playerNameSelector.addEventListener("input",  (e) => { //Cuando el usuario ingre
     document.getElementById("nombre-jugadorpuesto").innerHTML = playerName //Muestra el nombre del jugador en un elemento del DOM
 });
 
-startGameButtonSelector.addEventListener("click", () => { //Inicia el juego
+//Inicia el juego
+startGameButtonSelector.addEventListener("click", () => { 
     if (playerName.trim() === "") {
         alert("Por favor, ingrese su nombre antes de comenzar el juego."); // Chequea que nombreJugador no este vacía, si lo esta le pide el nombre
     } else {
@@ -32,6 +34,8 @@ startGameButtonSelector.addEventListener("click", () => { //Inicia el juego
         playerNameSelector.textContent = playerName; //Actualiza el contenido del playerNameSelector con el nombre del jugador después de que se eliminen los espacios en blanco
         playerNameSelector.setAttribute("readonly", "true"); //Hace que el campo de entrada de nombre sea solo de lectura, o sea que ya no se podrá editar el nombre puesto
         resetGame();
+        
+        gameStarted = true; // Indicamos que el juego ha comenzado
     }
 });
 
@@ -84,11 +88,17 @@ const checkWinner = () => {
     
 }
 
-const handleCellClick = e => {
+const handleCellClick = (e) => {
+    if (!gameStarted) {
+        alert("Por favor, presiona 'Comenzar Juego' antes de seleccionar una celda.");
+        return;
+    }
+
     const cell = e.target;
     const cellIndex = cell.id.split("-")[1]; //Se activa cuando se hace click en una celda
-
-    if (board[cellIndex] === "" && !gameOver) { //Verifica si la celda esta vacía y que no haya terminado el juego
+    
+    //Verifica si la celda esta vacía y que no haya terminado el juego
+    if (board[cellIndex] === "" && !gameOver) { 
         board[cellIndex] = player; // Si se cumplen estas condiciones la celda se marca con el símbolo del jugador (X)
         cell.textContent = player;
         checkWinner(); //Despues de marcar la celda se verifíca si hay un ganador
