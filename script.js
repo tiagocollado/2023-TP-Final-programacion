@@ -1,27 +1,48 @@
-let jugador = "X"; // Cambiar a "O" si la PC va primeroo
-let nombreJugador = "";
-let ganador= "";
+// Selectores DOM
+const playerNameSelector = document.getElementById("player-nombre")
+const cellsSelector = document.querySelectorAll(".cell");
+const resultSelector = document.getElementById("result");
+const resetButtonSelector = document.getElementById("reset");
+const playerScoreSelector = document.getElementById("player-score")
+const pcScoreSelector = document.getElementById("pc-score")
+const startGameButtonSelector = document.getElementById("start-game")
 
-document.getElementById("jugador-nombre").addEventListener("input", function () {
-    nombreJugador = this.value;
-    ganador = nombreJugador
-    document.getElementById("nombre-jugadorpuesto").innerHTML = nombreJugador
-});
 
-let scoreJugador = 0;
+// Inicializacion de variables
+let player = "X"; // Cambiar a "O" si la PC va primeroo
+let playerName = "";
+let winner= "";
+let scorePlayer = 0;
 let pcScore = 0;
-
-document.getElementById("jugador-score").textContent = scoreJugador;
-document.getElementById("pc-score").textContent = pcScore;
-
-let tablero = ["", "", "", "", "", "", "", "", ""];
+let board = ["", "", "", "", "", "", "", "", ""];
 let gameOver = false;
 
-const cells = document.querySelectorAll(".cell");
-const resultado = document.getElementById("resultado");
-const resetButton = document.getElementById("reset");
+// Creacion de todos los eventListener
+playerNameSelector.addEventListener("input",  (e) => {
+    playerName = e.target.value;
+    winner = playerName
+    document.getElementById("nombre-jugadorpuesto").innerHTML = playerName
+});
 
-function checkWinner() {
+startGameButtonSelector.addEventListener("click", () => {
+    if (playerName.trim() === "") {
+        alert("Por favor, ingrese su nombre antes de comenzar el juego."); // Chequea que nombreJugador no este vacía, si lo esta le pide el nombre
+    } else {
+        playerName = playerName.trim();
+        playerNameSelector.textContent = playerName;
+        playerNameSelector.setAttribute("readonly", "true");
+        resetGame();
+    }
+});
+
+playerScoreSelector.textContent = scorePlayer;
+pcScoreSelector.textContent = pcScore;
+
+
+
+
+
+const checkWinner = () => {
     const combinacionesGanadoras = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // Filas
         [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columnas
@@ -30,46 +51,46 @@ function checkWinner() {
 
     for (const combo of combinacionesGanadoras) {
         const [a, b, c] = combo;
-        if (tablero[a] && tablero[a] === tablero[b] && tablero[b] === tablero[c]) {
+        if (board[a] && board[a] === board[b] && board[b] === board[c]) {
             gameOver = true;
            
 
            
 
-            if (jugador === "X") {
-                scoreJugador += 10;
-                resultado.textContent = `${nombreJugador} ha ganado!`;
+            if (player === "X") {
+                scorePlayer += 10;
+                resultSelector.textContent = `${playerName} ha ganado!`;
             } else {
                 pcScore += 10;
-                resultado.textContent = "PC ha ganado!";
+                resultSelector.textContent = "PC ha ganado!";
             }
-            document.getElementById("jugador-score").textContent = scoreJugador;
-            document.getElementById("pc-score").textContent = pcScore;
+            playerScoreSelector.textContent = scorePlayer;
+            pcScoreSelector.textContent = pcScore;
             return;
         }
     }
 
-    if (tablero.every(cell => cell !== "")) {
+    if (board.every(cell => cell !== "")) {
         gameOver = true;
-        resultado.textContent = "Empate!";
+        resultSelector.textContent = "Empate!";
     }
 }
 
-function handleCellClick(e) {
+const handleCellClick = e => {
     const cell = e.target;
     const cellIndex = cell.id.split("-")[1]; //Se activa cuando se hace click en una celda
 
-    if (tablero[cellIndex] === "" && !gameOver) { //Verifica si la celda esta vacía y que no haya terminado el juego
-        tablero[cellIndex] = jugador; // Si se cumplen estas condiciones la celda se marca con el símbolo del jugador (X)
-        cell.textContent = jugador;
+    if (board[cellIndex] === "" && !gameOver) { //Verifica si la celda esta vacía y que no haya terminado el juego
+        board[cellIndex] = player; // Si se cumplen estas condiciones la celda se marca con el símbolo del jugador (X)
+        cell.textContent = player;
         checkWinner(); //Despues de marcar la celda se verifíca si hay un ganador
 
         if (!gameOver) {
-            jugador = jugador === "X" ? "O" : "X"; //Si el juego no terminó, cambia al siguiente jugador, y si este es "O", el código selecciona una celda al azar en el tablero y la marca con "O" despues de un breve retraso
+            player = player === "X" ? "O" : "X"; //Si el juego no terminó, cambia al siguiente jugador, y si este es "O", el código selecciona una celda al azar en el tablero y la marca con "O" despues de un breve retraso
 
-            if (jugador === "O") {
+            if (player === "O") {
                 // Simular jugada de la PC (aleatoria)
-                const emptyCells = tablero.reduce((acc, val, index) => {
+                const emptyCells = board.reduce((acc, val, index) => {
                     if (val === "") acc.push(index);
                     return acc;
                 }, []);
@@ -83,24 +104,13 @@ function handleCellClick(e) {
     }
 }
 
-function resetGame() {
-    jugador = "X"; // Restablecer al jugador humano
-    tablero = ["", "", "", "", "", "", "", "", ""];
+const resetGame = () => { 
+    player = "X"; // Restablecer al player humano
+    board = ["", "", "", "", "", "", "", "", ""];
     gameOver = false;
-    resultado.textContent = "";
-    cells.forEach(cell => cell.textContent = "");
+    resultSelector.textContent = "";
+    cellsSelector.forEach(cell => cell.textContent = "");
 }
 
-document.getElementById("start-game").addEventListener("click", function () {
-    if (nombreJugador.trim() === "") {
-        alert("Por favor, ingrese su nombre antes de comenzar el juego."); // Chequea que nombreJugador no este vacía, si lo esta le pide el nombre
-    } else {
-        nombreJugador = nombreJugador.trim();
-        document.getElementById("jugador-nombre").value = nombreJugador;
-        document.getElementById("jugador-nombre").setAttribute("readonly", "true");
-        resetGame();
-    }
-});
-
-cells.forEach(cell => cell.addEventListener("click", handleCellClick));
-resetButton.addEventListener("click", resetGame);
+cellsSelector.forEach(cell => cell.addEventListener("click", handleCellClick));
+resetButtonSelector.addEventListener("click", resetGame);
