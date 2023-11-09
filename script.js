@@ -57,15 +57,15 @@ function checkWinner() {
 
 function handleCellClick(e) {
     const cell = e.target;
-    const cellIndex = cell.id.split("-")[1];
+    const cellIndex = cell.id.split("-")[1]; //Se activa cuando se hace click en una celda
 
-    if (tablero[cellIndex] === "" && !gameOver) {
-        tablero[cellIndex] = jugador;
+    if (tablero[cellIndex] === "" && !gameOver) { //Verifica si la celda esta vacía y que no haya terminado el juego
+        tablero[cellIndex] = jugador; // Si se cumplen estas condiciones la celda se marca con el símbolo del jugador (X)
         cell.textContent = jugador;
-        checkWinner();
+        checkWinner(); //Despues de marcar la celda se verifíca si hay un ganador
 
         if (!gameOver) {
-            jugador = jugador === "X" ? "O" : "X";
+            jugador = jugador === "X" ? "O" : "X"; //Si el juego no terminó, cambia al siguiente jugador, y si este es "O", el código selecciona una celda al azar en el tablero y la marca con "O" despues de un breve retraso
 
             if (jugador === "O") {
                 // Simular jugada de la PC (aleatoria)
@@ -93,7 +93,7 @@ function resetGame() {
 
 document.getElementById("start-game").addEventListener("click", function () {
     if (nombreJugador.trim() === "") {
-        alert("Por favor, ingrese su nombre antes de comenzar el juego.");
+        alert("Por favor, ingrese su nombre antes de comenzar el juego."); // Chequea que nombreJugador no este vacía, si lo esta le pide el nombre
     } else {
         nombreJugador = nombreJugador.trim();
         document.getElementById("jugador-nombre").value = nombreJugador;
