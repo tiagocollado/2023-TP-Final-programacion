@@ -86,8 +86,9 @@ const handleCellClick = e => {
         if (!gameOver) {
             player = player === "X" ? "O" : "X"; //Si el juego no terminó, cambia al siguiente jugador, y si este es "O", el código selecciona una celda al azar en el tablero y la marca con "O" despues de un breve retraso
 
+            // Simular jugada de la PC (aleatoria)
             if (player === "O") {
-                // Simular jugada de la PC (aleatoria)
+                
                 const emptyCells = board.reduce((acc, val, index) => {
                     if (val === "") acc.push(index);
                     return acc;
