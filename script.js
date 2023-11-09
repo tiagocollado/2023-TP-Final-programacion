@@ -68,8 +68,8 @@ const checkWinner = () => {
                 pcScore += 10;
                 resultSelector.textContent = "PC ha ganado!";
             }
-            playerScoreSelector.textContent = scorePlayer;
-            pcScoreSelector.textContent = pcScore;
+            playerScoreSelector.innerHTML = scorePlayer;
+            pcScoreSelector.innerHTML = pcScore;
             return;
         }
     }
@@ -96,7 +96,7 @@ const handleCellClick = (e) => {
 
     const cell = e.target;
     const cellIndex = cell.id.split("-")[1]; //Se activa cuando se hace click en una celda
-    
+
     //Verifica si la celda esta vacía y que no haya terminado el juego
     if (board[cellIndex] === "" && !gameOver) { 
         board[cellIndex] = player; // Si se cumplen estas condiciones la celda se marca con el símbolo del jugador (X)
