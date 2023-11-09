@@ -89,11 +89,11 @@ const handleCellClick = e => {
             // Simular jugada de la PC (aleatoria)
             if (player === "O") {
                 
-                const emptyCells = board.reduce((acc, val, index) => {
+                const emptyCells = board.reduce((acc, val, index) => { //Crea el array "emptyCells" con índices de celdas vacías
                     if (val === "") acc.push(index);
-                    return acc;
+                    return acc; //"reduce" itera sobre el array "board" y agregar los índices de las celdas vacías al array "acc". "emptyCells" almacena estos índices
                 }, []);
-                const randomCellIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+                const randomCellIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)]; // Esto selecciona un índice aleatorio de las celdas vacías en el tablero
                 setTimeout(() => {
                     const pcCell = document.getElementById(`cell-${randomCellIndex}`);
                     pcCell.click();
