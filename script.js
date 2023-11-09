@@ -68,7 +68,7 @@ const checkWinner = () => {
         }
     }
 
-    if (board.every(cell => cell !== "")) {
+    if (board.every(cell => cell !== "")) { //"every" verifica si todos los elementos de un array cumplen con cierta condición. Significa que se verifica si cada "cell" en el array "board" no es una cadena vacía.
         gameOver = true;
         resultSelector.textContent = "Empate!";
     }
