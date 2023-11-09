@@ -41,22 +41,3 @@ h1 {
     border: 2px solid red;
     border-radius: 5px;
 }
-
-
-
-#print {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: dodgerblue;
-    font-size: 20px;
-}
-
-
-#main {
-    text-align: center;
-}
-
-
-#ins {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: dodgerblue;
-}
