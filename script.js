@@ -52,7 +52,9 @@ const checkWinner = () => {
     // Verifica si hay un ganador o si hay un empate, y suma los puntos
     for (const combo of combinacionesGanadoras) {
         const [a, b, c] = combo; //En cada iteración del bucle, se desestructura la combinación actual en las variables a, b y c. Estos valores representan los índices de las celdas en el tablero que están siendo evaluadas en esa combinación particular.
-        if (board[a] && board[a] === board[b] && board[b] === board[c]) { //Verifica si las celdas en los índices a, b y c del tablero contienen el mismo valor ("X" o "O"). Si todas estas celdas contienen el mismo valor y no están vacías("board[a]" verifica si "board[a]" no es una cadena vacía), significa que un jugador ha ganado.
+        
+        //Verifica si las celdas en los índices a, b y c del tablero contienen el mismo valor ("X" o "O"). Si todas estas celdas contienen el mismo valor y no están vacías("board[a]" verifica si "board[a]" no es una cadena vacía), significa que un jugador ha ganado.
+        if (board[a] && board[a] === board[b] && board[b] === board[c]) { 
             gameOver = true;
             
             if (player === "X") {
@@ -68,10 +70,18 @@ const checkWinner = () => {
         }
     }
 
-    if (board.every(cell => cell !== "")) { //"every" verifica si todos los elementos de un array cumplen con cierta condición. Significa que se verifica si cada "cell" en el array "board" no es una cadena vacía.
+    //"every" verifica si todos los elementos de un array cumplen con cierta condición. Significa que se verifica si cada "cell" en el array "board" no es una cadena vacía
+    if (board.every(cell => cell !== "")) { 
         gameOver = true;
         resultSelector.textContent = "Empate!";
     }
+
+    //Agregar límite de 50 puntos y definir al ganador
+    if (scorePlayer >= 50 || pcScore >= 50) { 
+        gameOver = true;
+        resultSelector.textContent = scorePlayer >= 50 ? `${playerName} ha ganado el juego!` : "PC ha ganado el juego!";
+    }
+    
 }
 
 const handleCellClick = e => {
