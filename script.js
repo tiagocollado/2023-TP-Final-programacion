@@ -18,10 +18,10 @@ let board = ["", "", "", "", "", "", "", "", ""];
 let gameOver = false;
 
 // Creacion de todos los eventListener
-playerNameSelector.addEventListener("input",  (e) => { //Captura el nombre del jugador
-    playerName = e.target.value;
-    winner = playerName
-    document.getElementById("nombre-jugadorpuesto").innerHTML = playerName
+playerNameSelector.addEventListener("input",  (e) => { //Cuando el usuario ingresa su nombre
+    playerName = e.target.value; //Obtiene el nombre ingresado por el usuario
+    winner = playerName //Establece al jugador ingresado como el posible ganador
+    document.getElementById("nombre-jugadorpuesto").innerHTML = playerName //Muestra el nombre del jugador en un elemento del DOM
 });
 
 startGameButtonSelector.addEventListener("click", () => { //Inicia el juego
