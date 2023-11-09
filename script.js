@@ -89,7 +89,7 @@ const handleCellClick = e => {
             // Simular jugada de la PC (aleatoria)
             if (player === "O") {
                 
-                const emptyCells = board.reduce((acc, val, index) => { //Crea el array "emptyCells" con índices de celdas vacías
+                const emptyCells = board.reduce((acc, val, index) => { //Crea el array "emptyCells" con índices de celdas vacías (acc es acumulador)(val es valor actual en el array)(index es indice actual en el array)
                     if (val === "") acc.push(index);
                     return acc; //"reduce" itera sobre el array "board" y agregar los índices de las celdas vacías al array "acc". "emptyCells" almacena estos índices
                 }, []);
