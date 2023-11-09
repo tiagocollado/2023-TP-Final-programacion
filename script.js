@@ -28,9 +28,9 @@ startGameButtonSelector.addEventListener("click", () => { //Inicia el juego
     if (playerName.trim() === "") {
         alert("Por favor, ingrese su nombre antes de comenzar el juego."); // Chequea que nombreJugador no este vacía, si lo esta le pide el nombre
     } else {
-        playerName = playerName.trim();
-        playerNameSelector.textContent = playerName;
-        playerNameSelector.setAttribute("readonly", "true");
+        playerName = playerName.trim(); //Elimina espacios en blanco al principio y al final del nombre del jugador
+        playerNameSelector.textContent = playerName; //Actualiza el contenido del playerNameSelector con el nombre del jugador después de que se eliminen los espacios en blanco.
+        playerNameSelector.setAttribute("readonly", "true"); //Hace que el campo de entrada de nombre sea solo de lectura, o sea que ya no se podrá editar el nombre puesto
         resetGame();
     }
 });
