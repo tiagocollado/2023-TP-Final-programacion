@@ -29,7 +29,7 @@ startGameButtonSelector.addEventListener("click", () => { //Inicia el juego
         alert("Por favor, ingrese su nombre antes de comenzar el juego."); // Chequea que nombreJugador no este vacía, si lo esta le pide el nombre
     } else {
         playerName = playerName.trim(); //Elimina espacios en blanco al principio y al final del nombre del jugador
-        playerNameSelector.textContent = playerName; //Actualiza el contenido del playerNameSelector con el nombre del jugador después de que se eliminen los espacios en blanco.
+        playerNameSelector.textContent = playerName; //Actualiza el contenido del playerNameSelector con el nombre del jugador después de que se eliminen los espacios en blanco
         playerNameSelector.setAttribute("readonly", "true"); //Hace que el campo de entrada de nombre sea solo de lectura, o sea que ya no se podrá editar el nombre puesto
         resetGame();
     }
@@ -41,7 +41,7 @@ pcScoreSelector.textContent = pcScore;
 
 
 
-//Utiliza combinaciones ganadoras para verificar el estado actual del tablero y actualiza los puntajes y el resultado en consecuencia.
+//Utiliza combinaciones ganadoras para verificar el estado actual del tablero y actualiza los puntajes y el resultado en consecuencia
 const checkWinner = () => {
     const combinacionesGanadoras = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // Filas
@@ -107,8 +107,9 @@ const resetGame = () => {
     board = ["", "", "", "", "", "", "", "", ""];
     gameOver = false;
     resultSelector.textContent = "";
-    cellsSelector.forEach(cell => cell.textContent = "");
+    cellsSelector.forEach(cell => cell.textContent = ""); //Limpia el contenido de todas las celdas del tablero en el DOM
 }
 
-cellsSelector.forEach(cell => cell.addEventListener("click", handleCellClick)); // Responde cuando se hace clic en una celda
+// Event Listeners adicionales
+cellsSelector.forEach(cell => cell.addEventListener("click", handleCellClick)); // Responde cuando el usuario haga clic en una celda
 resetButtonSelector.addEventListener("click", resetGame); //Para restablecer el juego cuando se hace clic en él
