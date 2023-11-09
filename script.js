@@ -77,7 +77,7 @@ function handleCellClick(e) {
                 setTimeout(() => {
                     const pcCell = document.getElementById(`cell-${randomCellIndex}`);
                     pcCell.click();
-                }, 500);
+                }, 500); //Selecciona la celda vacia aleatoria, despues de un retraso de 500 milisegundos, y cada celda se marca como 0
             }
         }
     }
