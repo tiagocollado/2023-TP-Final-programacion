@@ -41,7 +41,7 @@ pcScoreSelector.textContent = pcScore;
 
 
 
-
+//Utiliza combinaciones ganadoras para verificar el estado actual del tablero y actualiza los puntajes y el resultado en consecuencia.
 const checkWinner = () => {
     const combinacionesGanadoras = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // Filas
@@ -56,7 +56,7 @@ const checkWinner = () => {
            
 
            
-
+            // Verifica si hay un ganador o si hay un empate, y suma los puntos
             if (player === "X") {
                 scorePlayer += 10;
                 resultSelector.textContent = `${playerName} ha ganado!`;
