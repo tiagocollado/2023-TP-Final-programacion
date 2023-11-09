@@ -51,8 +51,8 @@ const checkWinner = () => {
 
     // Verifica si hay un ganador o si hay un empate, y suma los puntos
     for (const combo of combinacionesGanadoras) {
-        const [a, b, c] = combo;
-        if (board[a] && board[a] === board[b] && board[b] === board[c]) {
+        const [a, b, c] = combo; //En cada iteración del bucle, se desestructura la combinación actual en las variables a, b y c. Estos valores representan los índices de las celdas en el tablero que están siendo evaluadas en esa combinación particular.
+        if (board[a] && board[a] === board[b] && board[b] === board[c]) { //Verifica si las celdas en los índices a, b y c del tablero contienen el mismo valor ("X" o "O"). Si todas estas celdas contienen el mismo valor y no están vacías("board[a]" verifica si "board[a]" no es una cadena vacía), significa que un jugador ha ganado.
             gameOver = true;
             
             if (player === "X") {
