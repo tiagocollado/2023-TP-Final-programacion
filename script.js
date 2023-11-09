@@ -112,5 +112,5 @@ const resetGame = () => {
     cellsSelector.forEach(cell => cell.textContent = "");
 }
 
-cellsSelector.forEach(cell => cell.addEventListener("click", handleCellClick));
-resetButtonSelector.addEventListener("click", resetGame);
+cellsSelector.forEach(cell => cell.addEventListener("click", handleCellClick)); // Responde cuando se hace clic en una celda
+resetButtonSelector.addEventListener("click", resetGame); //Para restablecer el juego cuando se hace clic en él
