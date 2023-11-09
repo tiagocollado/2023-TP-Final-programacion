@@ -18,13 +18,13 @@ let board = ["", "", "", "", "", "", "", "", ""];
 let gameOver = false;
 
 // Creacion de todos los eventListener
-playerNameSelector.addEventListener("input",  (e) => {
+playerNameSelector.addEventListener("input",  (e) => { //Captura el nombre del jugador
     playerName = e.target.value;
     winner = playerName
     document.getElementById("nombre-jugadorpuesto").innerHTML = playerName
 });
 
-startGameButtonSelector.addEventListener("click", () => {
+startGameButtonSelector.addEventListener("click", () => { //Inicia el juego
     if (playerName.trim() === "") {
         alert("Por favor, ingrese su nombre antes de comenzar el juego."); // Chequea que nombreJugador no este vacía, si lo esta le pide el nombre
     } else {
