@@ -49,14 +49,12 @@ const checkWinner = () => {
         [0, 4, 8], [2, 4, 6]             // Diagonales
     ];
 
+    // Verifica si hay un ganador o si hay un empate, y suma los puntos
     for (const combo of combinacionesGanadoras) {
         const [a, b, c] = combo;
         if (board[a] && board[a] === board[b] && board[b] === board[c]) {
             gameOver = true;
-           
-
-           
-            // Verifica si hay un ganador o si hay un empate, y suma los puntos
+            
             if (player === "X") {
                 scorePlayer += 10;
                 resultSelector.textContent = `${playerName} ha ganado!`;
