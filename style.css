@@ -3,8 +3,18 @@ body {
 }
 
 h1 {
+    font-family:Georgia, 'Times New Roman', Times, serif;
     font-size: 60px;
     color: rgb(67, 0, 98);
+}
+
+#player-nombre{
+    background-color: white;
+}
+
+#start-game{
+    color: white;
+    background-color: red;
 }
 
 #tablero {
