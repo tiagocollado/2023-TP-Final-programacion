@@ -1,52 +1,77 @@
 // Selectores DOM
-const playerNameSelector = document.getElementById("player-nombre")
+const instructionsSelector = document.getElementById("instructions");
+const playerNameSelector = document.getElementById("player-nombre");
 const cellsSelector = document.querySelectorAll(".cell");
 const resultSelector = document.getElementById("result");
 const resetButtonSelector = document.getElementById("reset");
-const playerScoreSelector = document.getElementById("player-score")
-const pcScoreSelector = document.getElementById("pc-score")
-const startGameButtonSelector = document.getElementById("start-game")
+const playerScoreSelector = document.getElementById("player-score");
+const pcScoreSelector = document.getElementById("pc-score");
+const startGameButtonSelector = document.getElementById("start-game");
+const PUNTAJE_GANADOR = 50;
 
 
 // Inicializacion de variables
 let player = "X"; // Cambiar a "O" si la PC va primeroo
 let playerName = "";
-let winner= "";
+let winner = "";
 let scorePlayer = 0;
 let pcScore = 0;
 let board = ["", "", "", "", "", "", "", "", ""];
 let gameOver = false;
 let gameStarted = false;
 
+// Instrucciones
+instructionsSelector.onclick = function () {
+    alert('El juego de "Tres en línea" implica dos jugadores que alternan colocando sus símbolos, generalmente "X" y "O", en un tablero de 3x3. El objetivo es lograr que tres de sus símbolos estén alineados en fila, ya sea horizontal, vertical o diagonal. El juego continúa hasta que un jugador alcanza esta condición de victoria o hasta que el tablero se llena sin que ninguno de los jugadores obtenga la alineación deseada, resultando en un empate.');
+}
+
 // Creacion de todos los eventListener
-playerNameSelector.addEventListener("input",  (e) => { //Cuando el usuario ingresa su nombre
+playerNameSelector.addEventListener("input", (e) => { //Cuando el usuario ingresa su nombre
     playerName = e.target.value; //Obtiene el nombre ingresado por el usuario
     winner = playerName //Establece al jugador ingresado como el posible ganador
     document.getElementById("nombre-jugadorpuesto").innerHTML = playerName //Muestra el nombre del jugador en un elemento del DOM
 });
 
 //Inicia el juego
-startGameButtonSelector.addEventListener("click", () => { 
+startGameButtonSelector.onclick = function () {
     if (playerName.trim() === "") {
         alert("Por favor, ingrese su nombre antes de comenzar el juego."); // Chequea que nombreJugador no este vacía, si lo esta le pide el nombre
     } else {
         playerName = playerName.trim(); //Elimina espacios en blanco al principio y al final del nombre del jugador
         playerNameSelector.textContent = playerName; //Actualiza el contenido del playerNameSelector con el nombre del jugador después de que se eliminen los espacios en blanco
         playerNameSelector.setAttribute("readonly", "true"); //Hace que el campo de entrada de nombre sea solo de lectura, o sea que ya no se podrá editar el nombre puesto
-        resetGame();
-        
+        resetBoard();
+
         gameStarted = true; // Indicamos que el juego ha comenzado
     }
-});
+}
+
 
 playerScoreSelector.textContent = scorePlayer;
 pcScoreSelector.textContent = pcScore;
 
+//Funcion del ganador
 
 
+function checkWinner() {
+    //Agregar límite de 50 puntos y definir al ganador
+    if (scorePlayer >= PUNTAJE_GANADOR) {
+        gameOver = true;
+        resultSelector.textContent = `${playerName} ha ganado el juego!`;
+
+        resetButtonSelector.innerHTML = "Reiniciar Juego"
+    }
+
+    if (pcScore >= PUNTAJE_GANADOR) {
+        gameOver = true;
+        resultSelector.textContent = "PC ha ganado el juego!";
+
+        resetButtonSelector.innerHTML = "Reiniciar Juego"
+    }
+}
 
 //Utiliza combinaciones ganadoras para verificar el estado actual del tablero y actualiza los puntajes y el resultado en consecuencia
-const checkWinner = () => {
+const checkWinnerRound = () => {
     const combinacionesGanadoras = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // Filas
         [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columnas
@@ -54,39 +79,34 @@ const checkWinner = () => {
     ];
 
     // Verifica si hay un ganador o si hay un empate, y suma los puntos
-    for (const combo of combinacionesGanadoras) {
+    combinacionesGanadoras.forEach(combo => {
         const [a, b, c] = combo; //En cada iteración del bucle, se desestructura la combinación actual en las variables a, b y c. Estos valores representan los índices de las celdas en el tablero que están siendo evaluadas en esa combinación particular.
-        
+
         //Verifica si las celdas en los índices a, b y c del tablero contienen el mismo valor ("X" o "O"). Si todas estas celdas contienen el mismo valor y no están vacías("board[a]" verifica si "board[a]" no es una cadena vacía), significa que un jugador ha ganado.
-        if (board[a] && board[a] === board[b] && board[b] === board[c]) { 
+        if (board[a] && board[a] === board[b] && board[b] === board[c]) {
             gameOver = true;
-            
+
             if (player === "X") {
                 scorePlayer += 10;
-                resultSelector.textContent = `${playerName} ha ganado!`;
+                resultSelector.innerHTML = `${playerName} ha ganado!`;
             } else {
                 pcScore += 10;
-                resultSelector.textContent = "PC ha ganado!";
+                resultSelector.innerHTML = "PC ha ganado!";
             }
             playerScoreSelector.innerHTML = scorePlayer;
             pcScoreSelector.innerHTML = pcScore;
-            return;
         }
-    }
+    })
 
     //"every" verifica si todos los elementos de un array cumplen con cierta condición. Significa que se verifica si cada "cell" en el array "board" no es una cadena vacía
-    if (board.every(cell => cell !== "")) { 
+    if (board.every(cell => cell !== "") && gameOver === false) {
         gameOver = true;
-        resultSelector.textContent = "Empate!";
+        resultSelector.innerHTML = "Empate!";
     }
 
-    //Agregar límite de 50 puntos y definir al ganador
-    if (scorePlayer >= 50 || pcScore >= 50) { 
-        gameOver = true;
-        resultSelector.textContent = scorePlayer >= 50 ? `${playerName} ha ganado el juego!` : "PC ha ganado el juego!";
-    }
-    
+    checkWinner();
 }
+
 
 const handleCellClick = (e) => {
     if (!gameStarted) {
@@ -98,21 +118,29 @@ const handleCellClick = (e) => {
     const cellIndex = cell.id.split("-")[1]; //Se activa cuando se hace click en una celda
 
     //Verifica si la celda esta vacía y que no haya terminado el juego
-    if (board[cellIndex] === "" && !gameOver) { 
+    if (board[cellIndex] === "" && !gameOver) {
         board[cellIndex] = player; // Si se cumplen estas condiciones la celda se marca con el símbolo del jugador (X)
         cell.textContent = player;
-        checkWinner(); //Despues de marcar la celda se verifíca si hay un ganador
+        checkWinnerRound(); //Despues de marcar la celda se verifíca si hay un ganador
 
         if (!gameOver) {
             player = player === "X" ? "O" : "X"; //Si el juego no terminó, cambia al siguiente jugador, y si este es "O", el código selecciona una celda al azar en el tablero y la marca con "O" despues de un breve retraso
 
             // Simular jugada de la PC (aleatoria)
             if (player === "O") {
-                
-                const emptyCells = board.reduce((acc, val, index) => { //Crea el array "emptyCells" con índices de celdas vacías (acc es acumulador)(val es valor actual en el array)(index es indice actual en el array)
-                    if (val === "") acc.push(index);
-                    return acc; //"reduce" itera sobre el array "board" y agregar los índices de las celdas vacías al array "acc". "emptyCells" almacena estos índices
-                }, []);
+
+                // const emptyCells = board.reduce((acc, val, index) => { //Crea el array "emptyCells" con índices de celdas vacías (acc es acumulador)(val es valor actual en el array)(index es indice actual en el array)
+                //     if (val === "") acc.push(index);
+                //     return acc; //"reduce" itera sobre el array "board" y agregar los índices de las celdas vacías al array "acc". "emptyCells" almacena estos índices
+                // }, []);
+
+                const emptyCells = [];
+                board.forEach((val, index) => {
+                    if (val === "") {
+                        emptyCells.push(index);
+                    }
+                });
+
                 const randomCellIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)]; // Esto selecciona un índice aleatorio de las celdas vacías en el tablero
                 setTimeout(() => {
                     const pcCell = document.getElementById(`cell-${randomCellIndex}`);
@@ -123,7 +151,7 @@ const handleCellClick = (e) => {
     }
 }
 
-const resetGame = () => { 
+const resetBoard = () => {
     player = "X"; // Restablecer al player humano
     board = ["", "", "", "", "", "", "", "", ""];
     gameOver = false;
@@ -131,6 +159,16 @@ const resetGame = () => {
     cellsSelector.forEach(cell => cell.textContent = ""); //Limpia el contenido de todas las celdas del tablero en el DOM
 }
 
-// Event Listeners adicionales
 cellsSelector.forEach(cell => cell.addEventListener("click", handleCellClick)); // Responde cuando el usuario haga clic en una celda
-resetButtonSelector.addEventListener("click", resetGame); //Para restablecer el juego cuando se hace clic en él
+
+//Para restablecer el juego cuando se hace clic en él
+resetButtonSelector.onclick = function () {
+    if (resetButtonSelector.textContent === "Reiniciar Juego") {
+        scorePlayer = 0;
+        pcScore = 0;
+        playerScoreSelector.innerHTML = 0;
+        pcScoreSelector.innerHTML = 0;
+        resetButtonSelector.innerHTML = "Reiniciar Ronda";
+    }
+    resetBoard();
+}

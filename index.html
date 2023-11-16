@@ -6,8 +6,12 @@
 <body>
     <h1>TA-TE-TI</h1>
     
-    <input type="text" id="player-nombre" placeholder="Ingrese su nombre">
-    <button id="start-game">Comenzar Juego</button>
+    <div id="buttonsContainer">
+        <button id="instructions">Ver Instrucciones</button>
+        <input type="text" id="player-nombre" placeholder="Ingrese su nombre">
+        <button id="start-game">Comenzar Juego</button>
+    </div>
+    
 
     <div id="score">
         <p><span id= "nombre-jugadorpuesto">Jugador</span>: <span id="player-score">0</span></p>
@@ -27,7 +31,7 @@
         <div class="cell" id="cell-8"></div>
     </div>
     <div id="result"></div>
-    <button id="reset">Reiniciar Juego</button>
+    <button id="reset">Reiniciar Ronda</button>
     <script src="script.js"></script>
 </body>
 

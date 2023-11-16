@@ -8,6 +8,21 @@ h1 {
     color: rgb(67, 0, 98);
 }
 
+#buttonsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttonsContainer >*{
+    margin: 5px;
+}
+
+#instructions{
+    color: white;
+    background-color: red;
+}
+
 #player-nombre{
     background-color: white;
 }

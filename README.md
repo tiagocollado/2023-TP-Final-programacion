@@ -25,7 +25,7 @@ Los jugadores pueden competir contra la computadora, acumulando puntos por cada 
 
 ## Contribuciones
 
-Nos surgio como dificultad guardar el nombre. por ejem
+Nos surgio como dificultad pensar la logica para verificar quien de los jugadores ha ganado (ya sea el usuario o la PC). Ademas tuvimos que utilizar estructuras multidimencionales en todas las combinaciones que se podia ganar en el Ta-te-ti.
 
 ## Licencia
 
