@@ -22,7 +22,7 @@ let gameStarted = false;
 
 // Instrucciones
 instructionsSelector.onclick = function () {
-alert('Bienvenido al juego del Ta-te-ti. \nCada jugador (usuario y PC) tiene turnos para colocar sus símbolos ("X" y "O") en un tablero de 3x3. Por turnos, cada jugador coloca su símbolo en un espacio vacío. El objetivo es lograr tener tres de tus símbolos en línea, ya sea horizontal, vertical o diagonal, antes que tu oponente. Si el tablero se llena sin un ganador, es un empate. \n¡Gana el primero que complete la línea, y llegue a 50 puntos! ');
+alert('Bienvenido al juego del Ta-te-ti. \nCada jugador (usuario y PC) tiene turnos para colocar sus símbolos ("X" y "O") en un tablero de 3x3. Por turnos, cada jugador coloca su símbolo en un espacio vacío. El objetivo es lograr tener tres de tus símbolos en línea, ya sea horizontal, vertical o diagonal, antes que tu oponente. Si el tablero se llena sin un ganador, es un empate. \n¡Gana el primero que complete la línea, y llegue a 50 puntos! \nEn memoria de Nachito y Pichuli... Q.E.P.D.');
 }
 
 // Creacion de todos los eventListener
