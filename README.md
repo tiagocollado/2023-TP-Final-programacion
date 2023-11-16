@@ -15,6 +15,7 @@ Los jugadores pueden competir contra la computadora, acumulando puntos por cada 
 
 - Tiago Collado
 - Felipe Ares
+- Profesora: María Belén López del Monte
 
 ## Instrucciones de Uso
 

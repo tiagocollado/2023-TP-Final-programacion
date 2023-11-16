@@ -22,7 +22,7 @@ let gameStarted = false;
 
 // Instrucciones
 instructionsSelector.onclick = function () {
-    alert('El juego de "Tres en línea" implica dos jugadores que alternan colocando sus símbolos, generalmente "X" y "O", en un tablero de 3x3. El objetivo es lograr que tres de sus símbolos estén alineados en fila, ya sea horizontal, vertical o diagonal. El juego continúa hasta que un jugador alcanza esta condición de victoria o hasta que el tablero se llena sin que ninguno de los jugadores obtenga la alineación deseada, resultando en un empate.');
+alert('Bienvenido al juego del Ta-te-ti. \nCada jugador (usuario y PC) tiene turnos para colocar sus símbolos ("X" y "O") en un tablero de 3x3. Por turnos, cada jugador coloca su símbolo en un espacio vacío. El objetivo es lograr tener tres de tus símbolos en línea, ya sea horizontal, vertical o diagonal, antes que tu oponente. Si el tablero se llena sin un ganador, es un empate. \n¡Gana el primero que complete la línea, y llegue a 50 puntos! ');
 }
 
 // Creacion de todos los eventListener
