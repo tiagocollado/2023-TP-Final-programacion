@@ -17,6 +17,11 @@ Los jugadores pueden competir contra la computadora, acumulando puntos por cada 
 - Felipe Ares
 - Profesora: María Belén López del Monte
 
+## Presentaciones sobre Temas Investigados
+
+- **jQuery** (https://docs.google.com/presentation/d/1qQyhXkiQlVklNkPzEo8rh6TfvcSyj5T-uyFqDJszTcM/edit#slide=id g1eb53d9f7ff_0_1)
+- **Bootstrap** ()
+
 ## Instrucciones de Uso
 
 1. Clonar el repositorio: `git clone [URL del repositorio]`
