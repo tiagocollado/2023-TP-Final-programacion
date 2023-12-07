@@ -113,6 +113,11 @@ h4 {
     margin-bottom: 20px;
 }
 
+.info-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
 #landingPage button {
     font-family: 'Lobster', cursive;
     font-size: 20px;
@@ -121,4 +126,35 @@ h4 {
     border: 2px solid rgb(45, 1, 66);
     border-radius: 5px;
     background-color: rgb(0, 255, 208);
+}
+
+.ranking-section {
+    display: flex;
+    justify-content: center;
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(45, 1, 66);
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.table-row {
+    display: flex;
+    border-bottom: 1px solid rgb(45, 1, 66);
+}
+
+.header-row {
+    font-weight: bold;
+    background-color: rgb(45, 1, 66);
+    color: white;
+}
+
+.header-cell,
+.data-cell {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
 }
