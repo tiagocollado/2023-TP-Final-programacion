@@ -10,136 +10,148 @@
 
 <body>
 
-  <h1>the Thunderbolts.com</h1>
+  <h1>theThunderbolts.com</h1>
 
   <div id="landingPage">
 
     <section class="info-section">
       <h2>Información del Juego</h2>
       <p>Este proyecto implementa el juego de Ta-te-ti (Tic Tac Toe). <br> Los jugadores pueden competir contra la
-        computadora, acumulando puntos por cada línea horizontal, vertical o diagonal completada.<br> El juego finaliza
+        computadora, acumulando puntos por cada línea horizontal, vertical o diagonal completada.<br> El juego
+        finaliza
         cuando un jugador alcanza 50 puntos.</p>
     </section>
 
     <button id="startGameButton">Comenzar</button>
 
-    <div class="formularioContacto">
-      <h2> Formulario de opiniones </h2>
-      <form class="formContacto">
-        <div class="formImputs">
+    <hr style="border-color: rgb(45, 1, 66);width: 50%;">
 
-          <div class="labelscheck">
-            <div>
-              <label class="formLabel">Nombre</label>
-              <input type="text" id="firstName" name="firstName">
-            </div>
-            <div>
-              <div class="mb-3">
-                <label for="formFile" class="form-label">Inserte una foto suya</label>
-                <input class="form-control" type="file" id="formFile">
+    <div class="sections-container">
+
+      <section class="formulario-section">
+
+        <h2>Formulario de opiniones</h2>
+
+        <form class="formContacto">
+          <div class="formImputs">
+
+            <div class="labelscheck">
+              <div>
+                <label class="formLabel">Nombre</label>
+                <input type="text" id="firstName" name="firstName">
+              </div>
+              <div>
+                <div class="mb-3">
+                  <label for="formFile" class="form-label">Inserte una foto suya</label>
+                  <input class="form-control" type="file" id="formFile">
+                </div>
+
               </div>
 
+              <label for="customRange1" class="form-label">Dificultad del juego</label>
+              <input type="range" class="form-range" id="customRange1">
+
+              <select class="form-select" aria-label="form-select">
+                <option selected>Calificacion del juego</option>
+                <option value="1">Uno</option>
+                <option value="2">Dos</option>
+                <option value="3">Tres</option>
+                <option value="4">Cuatro</option>
+                <option value="5">Cinco</option>
+                <option value="6">Seis</option>
+                <option value="7">Siete</option>
+                <option value="8">Ocho</option>
+                <option value="9">Nueve</option>
+                <option value="10">Diez</option>
+              </select>
+
             </div>
 
-            <label for="customRange1" class="form-label">Dificultad del juego</label>
-            <input type="range" class="form-range" id="customRange1">
-
-            <select class="form-select" aria-label="form-select">
-              <option selected>Calificacion del juego</option>
-              <option value="1">Uno</option>
-              <option value="2">Dos</option>
-              <option value="3">Tres</option>
-              <option value="4">Cuatro</option>
-              <option value="5">Cinco</option>
-              <option value="6">Seis</option>
-              <option value="7">Siete</option>
-              <option value="8">Ocho</option>
-              <option value="9">Nueve</option>
-              <option value="10">Diez</option>
-            </select>
-
+            <div class="campoMail">
+              <label for="exampleFormControlInput1" class="form-label">Direccion Email</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="campoRellenar">
+              <label for="exampleFormControlTextarea1" class="form-label">Comentarios o sugerencias</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
           </div>
 
-          <div class="campoMail">
-            <label for="exampleFormControlInput1" class="form-label">Direccion Email</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          <input type="checkbox" id="checkbox" name="checkbox">
+          <label for="checkbox"> Acepto recibir mails comunicancome de actualizaciones sobre el juego </label>
+
+        </form>
+      </section>
+
+
+
+
+      <section class="ranking-section">
+
+        <h2>Tabla de Ranking</h2>
+
+        <div class="table-container">
+
+          <div class="table-row header-row">
+            <span class="header-cell">Posición</span>
+            <span class="header-cell">Usuario</span>
+            <span class="header-cell">Puntos</span>
           </div>
-          <div class="campoRellenar">
-            <label for="exampleFormControlTextarea1" class="form-label">Comentarios o sugerencias</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <div class="table-row">
+            <p class="data-cell">1</p>
+            <p class="data-cell">Nachito</p>
+            <p class="data-cell">300</p>
           </div>
+          <div class="table-row">
+            <p class="data-cell">2</p>
+            <p class="data-cell">Pichuli</p>
+            <p class="data-cell">280</p>
+          </div>
+          <div class="table-row">
+            <p class="data-cell">3</p>
+            <p class="data-cell">Pato</p>
+            <p class="data-cell">220</p>
+          </div>
+          <div class="table-row">
+            <p class="data-cell">4</p>
+            <p class="data-cell">Agus Giagante</p>
+            <p class="data-cell">170</p>
+          </div>
+          <div class="table-row">
+            <p class="data-cell">5</p>
+            <p class="data-cell">Jacinta</p>
+            <p class="data-cell">130</p>
+          </div>
+          <div class="table-row">
+            <p class="data-cell">6</p>
+            <p class="data-cell">Luquita Mazzei</p>
+            <p class="data-cell">100</p>
+          </div>
+          <div class="table-row">
+            <p class="data-cell">7</p>
+            <p class="data-cell">Nico</p>
+            <p class="data-cell">80</p>
+          </div>
+          <div class="table-row">
+            <p class="data-cell">8</p>
+            <p class="data-cell">Raul</p>
+            <p class="data-cell">70</p>
+          </div>
+          <div class="table-row">
+            <p class="data-cell">9</p>
+            <p class="data-cell">Vicky</p>
+            <p class="data-cell">40</p>
+          </div>
+          <div class="table-row">
+            <p class="data-cell">10</p>
+            <p class="data-cell">Jacinto</p>
+            <p class="data-cell">20</p>
+          </div>
+
         </div>
+      </section>
 
-        <input type="checkbox" id="checkbox" name="checkbox">
-        <label for="checkbox"> Acepto recibir mails comunicancome de actualizaciones sobre el juego </label>
-
-      </form>
     </div>
-
-    <h2>Tabla de Ranking</h2>
-
-    <section class="ranking-section">
-
-      <div class="table-container">
-
-        <div class="table-row header-row">
-          <span class="header-cell">Posición</span>
-          <span class="header-cell">Usuario</span>
-          <span class="header-cell">Puntos</span>
-        </div>
-        <div class="table-row">
-          <p class="data-cell">1</p>
-          <p class="data-cell">Nachito</p>
-          <p class="data-cell">300</p>
-        </div>
-        <div class="table-row">
-          <p class="data-cell">2</p>
-          <p class="data-cell">Pichuli</p>
-          <p class="data-cell">280</p>
-        </div>
-        <div class="table-row">
-          <p class="data-cell">3</p>
-          <p class="data-cell">Pato</p>
-          <p class="data-cell">220</p>
-        </div>
-        <div class="table-row">
-          <p class="data-cell">4</p>
-          <p class="data-cell">Agus Giagante</p>
-          <p class="data-cell">170</p>
-        </div>
-        <div class="table-row">
-          <p class="data-cell">5</p>
-          <p class="data-cell">Jacinta</p>
-          <p class="data-cell">130</p>
-        </div>
-        <div class="table-row">
-          <p class="data-cell">6</p>
-          <p class="data-cell">Luquita Mazzei</p>
-          <p class="data-cell">100</p>
-        </div>
-        <div class="table-row">
-          <p class="data-cell">7</p>
-          <p class="data-cell">Nico</p>
-          <p class="data-cell">80</p>
-        </div>
-        <div class="table-row">
-          <p class="data-cell">8</p>
-          <p class="data-cell">Raul</p>
-          <p class="data-cell">70</p>
-        </div>
-        <div class="table-row">
-          <p class="data-cell">9</p>
-          <p class="data-cell">Vicky</p>
-          <p class="data-cell">40</p>
-        </div>
-        <div class="table-row">
-          <p class="data-cell">10</p>
-          <p class="data-cell">Jacinto</p>
-          <p class="data-cell">20</p>
-        </div>
-
-      </div>
-    </section>
 
   </div>
 
