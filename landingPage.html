@@ -41,6 +41,59 @@
           </tr>
         </tbody>
       </table>
+      <div class="formularioContacto">
+      <h2> Formulario de opiniones </h2>
+      <form class="formContacto">
+        <div class="formImputs">
+
+          <div class="labelscheck">
+            <div>
+              <label class="formLabel">Nombre</label>
+              <input type="text" id="firstName" name="firstName">
+            </div>
+            <div>
+            <div class="mb-3">
+                    <label for="formFile" class="form-label">Inserte una foto suya</label>
+                    <input class="form-control" type="file" id="formFile">
+            </div>
+           
+          </div>
+
+          <label for="customRange1" class="form-label">Dificultad del juego</label>
+            <input type="range" class="form-range" id="customRange1">
+
+          <select class="form-select" aria-label="form-select">
+            <option selected>Calificacion del juego</option>
+            <option value="1">Uno</option>
+            <option value="2">Dos</option>
+            <option value="3">Tres</option>
+            <option value="4">Cuatro</option>
+            <option value="5">Cinco</option>
+            <option value="6">Seis</option>
+            <option value="7">Siete</option>
+            <option value="8">Ocho</option>
+            <option value="9">Nueve</option>
+            <option value="10">Diez</option>
+          </select>
+           
+          </div>
+    
+          <div class="campoMail">
+            <label for="exampleFormControlInput1" class="form-label">Direccion Email</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+          <div class="campoRellenar">
+            <label for="exampleFormControlTextarea1" class="form-label">Comentarios o sugerencias</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+        </div>
+
+          <input type="checkbox" id="checkbox" name="checkbox"> 
+          <label for="checkbox"> Acepto recibir mails comunicancome de actualizaciones sobre el juego </label>
+          
+
+      </form>
+    </div>
     <script>
         startGameButton.onclick = function () {
             window.location.href = "index.html";
