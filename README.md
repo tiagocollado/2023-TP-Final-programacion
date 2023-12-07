@@ -19,8 +19,8 @@ Los jugadores pueden competir contra la computadora, acumulando puntos por cada 
 
 ## Presentaciones sobre Temas Investigados
 
-- **jQuery** (https://docs.google.com/presentation/d/1qQyhXkiQlVklNkPzEo8rh6TfvcSyj5T-uyFqDJszTcM/edit#slide=id.g1e91ce7a80d_0_16)
-- **Bootstrap** ()
+- [jQuery](https://docs.google.com/presentation/d/1bExmphrQynP5NhI_JTWlIjR2cJOXUJ7Y1SPJvcVL5C0/edit#slide=id.p)
+- [Bootstrap](https://docs.google.com/presentation/d/1bExmphrQynP5NhI_JTWlIjR2cJOXUJ7Y1SPJvcVL5C0/edit#slide=id.p)
 
 ## Instrucciones de Uso
 
